@@ -1,85 +1,58 @@
-// Ambil nama dari link (?to=Nama)
+// 1. LANGSUNG GANTI NAMA (Tanpa Tunggu Apapun)
 const urlParams = new URLSearchParams(window.location.search);
 const namaTamu = urlParams.get('to');
+if (namaTamu) {
+    // Cari id guest-name secara berkala sampai ketemu
+    const checkExist = setInterval(function() {
+        const guestElement = document.getElementById('guest-name');
+        if (guestElement) {
+            guestElement.innerText = namaTamu;
+            clearInterval(checkExist);
+        }
+    }, 100); 
+}
 
-// Ganti tulisan "Tamu Undangan" kalau ada nama di link
+// 2. INISIALISASI AOS
 document.addEventListener('DOMContentLoaded', () => {
-    const guestElement = document.getElementById('guest-name');
-    if (namaTamu && guestElement) {
-        guestElement.innerText = namaTamu;
-    }
+    AOS.init({ duration: 1000, once: true });
 });
 
-// Inisialisasi Animasi AOS
-AOS.init({ duration: 1000, once: true });
-
+// 3. FUNGSI BUKA UNDANGAN & MUSIK
 const audio = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('music-btn');
 const cover = document.getElementById('cover');
 
-// Fungsi Utama Buka Undangan
 function openInvitation() {
-    cover.classList.add('open'); 
-    document.body.style.overflow = 'auto'; // Aktifkan scroll
-    
-    // Putar Musik
-    audio.play().catch(() => console.log("User interaction required"));
-    musicBtn.style.display = 'block';
-}
-
-// Fungsi Play/Pause Musik
-function toggleMusic() {
-    if (audio.paused) {
-        audio.play();
-        musicBtn.innerHTML = "🎵";
-    } else {
-        audio.pause();
-        musicBtn.innerHTML = "🔇";
+    if (cover) {
+        cover.style.transform = 'translateY(-100%)';
+        cover.style.transition = 'transform 1s ease-in-out';
+        document.body.style.overflow = 'auto';
+        if (audio) audio.play();
+        setTimeout(() => { cover.style.display = 'none'; }, 1000);
     }
 }
 
-// Fungsi Salin Rekening BCA
-function copyAccount() {
-    const rekText = document.getElementById('rekBCA').innerText;
-    const btn = document.getElementById('btnCopy');
-    
-    navigator.clipboard.writeText(rekText).then(() => {
-        btn.innerHTML = "✅ BERHASIL DISALIN";
-        btn.style.background = "#fff";
-        
-        setTimeout(() => {
-            btn.innerHTML = "SALIN REKENING";
-            btn.style.background = "var(--gold)";
-        }, 2000);
-    });
+function toggleMusic() {
+    const btn = document.getElementById('music-btn');
+    if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "🎵";
+    } else {
+        audio.pause();
+        btn.innerHTML = "🔇";
+    }
 }
-// SETTING TANGGAL ACARA (Tahun, Bulan-1, Tanggal, Jam, Menit)
-// Contoh: 31 Desember 2026 (Bulan Desember itu angka 11 di coding)
-const weddingDate = new Date(2026, 11, 31, 09, 0, 0).getTime();
 
-const countdown = setInterval(function() {
+// 4. COUNTDOWN
+const weddingDate = new Date(2026, 11, 31, 9, 0, 0).getTime();
+setInterval(function() {
     const now = new Date().getTime();
     const distance = weddingDate - now;
-
-    // Perhitungan waktu
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Tampilkan ke dalam elemen id="timer"
-    document.getElementById("timer").innerHTML = `
-        <div class="timer-box"><span>${days}</span><p>Hari</p></div>
-        <div class="timer-box"><span>${hours}</span><p>Jam</p></div>
-        <div class="timer-box"><span>${minutes}</span><p>Menit</p></div>
-        <div class="timer-box"><span>${seconds}</span><p>Detik</p></div>
-    `;
-
-    // Jika waktu habis
-    if (distance < 0) {
-        clearInterval(countdown);
-        document.getElementById("timer").innerHTML = "<h3>Acara Sedang Berlangsung</h3>";
+    const timer = document.getElementById("timer");
+    if (timer) {
+        timer.innerHTML = `<div class='timer-box'>${days}d ${hours}h ${minutes}m ${seconds}s</div>`;
     }
 }, 1000);
-
-
