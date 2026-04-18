@@ -1,15 +1,14 @@
-// 1. LANGSUNG GANTI NAMA (Tanpa Tunggu Apapun)
+// 1. FITUR NAMA TAMU (CEPAT & ANTI GAGAL)
 const urlParams = new URLSearchParams(window.location.search);
 const namaTamu = urlParams.get('to');
 if (namaTamu) {
-    // Cari id guest-name secara berkala sampai ketemu
     const checkExist = setInterval(function() {
         const guestElement = document.getElementById('guest-name');
         if (guestElement) {
             guestElement.innerText = namaTamu;
             clearInterval(checkExist);
         }
-    }, 100); 
+    }, 100);
 }
 
 // 2. INISIALISASI AOS
@@ -26,7 +25,7 @@ function openInvitation() {
         cover.style.transform = 'translateY(-100%)';
         cover.style.transition = 'transform 1s ease-in-out';
         document.body.style.overflow = 'auto';
-        if (audio) audio.play();
+        if (audio) audio.play().catch(() => console.log("Musik butuh klik"));
         setTimeout(() => { cover.style.display = 'none'; }, 1000);
     }
 }
@@ -42,17 +41,56 @@ function toggleMusic() {
     }
 }
 
-// 4. COUNTDOWN
+// 4. FUNGSI SALIN REKENING (FIXED)
+function copyAccount() {
+    const rekText = document.getElementById('rekBCA').innerText;
+    const btn = document.getElementById('btnCopy');
+    
+    // Salin ke Clipboard
+    navigator.clipboard.writeText(rekText).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = "✅ BERHASIL DISALIN";
+        btn.style.backgroundColor = "#ffffff";
+        btn.style.color = "#000000";
+        
+        // Kembalikan tombol ke semula setelah 2 detik
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.backgroundColor = ""; 
+            btn.style.color = "";
+        }, 2000);
+    }).catch(err => {
+        // Fallback jika browser tidak support navigator.clipboard
+        alert("Nomor Rekening: " + rekText);
+    });
+}
+
+// 5. FITUR COUNTDOWN (DENGAN BENTUK KOTAK ASLI)
 const weddingDate = new Date(2026, 11, 31, 9, 0, 0).getTime();
-setInterval(function() {
+
+const countdown = setInterval(function() {
     const now = new Date().getTime();
     const distance = weddingDate - now;
+
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    const timer = document.getElementById("timer");
-    if (timer) {
-        timer.innerHTML = `<div class='timer-box'>${days}d ${hours}h ${minutes}m ${seconds}s</div>`;
+
+    const timerElement = document.getElementById("timer");
+    if (timerElement) {
+        timerElement.innerHTML = `
+            <div class="timer-box"><span>${days}</span><p>Hari</p></div>
+            <div class="timer-box"><span>${hours}</span><p>Jam</p></div>
+            <div class="timer-box"><span>${minutes}</span><p>Menit</p></div>
+            <div class="timer-box"><span>${seconds}</span><p>Detik</p></div>
+        `;
+    }
+
+    if (distance < 0) {
+        clearInterval(countdown);
+        if (timerElement) {
+            timerElement.innerHTML = "<h3>Acara Sedang Berlangsung</h3>";
+        }
     }
 }, 1000);
