@@ -158,3 +158,25 @@ section { padding: 80px 20px; text-align: center; max-width: 800px; margin: auto
     object-fit: cover !important;
     border-radius: 8px !important;
 }
+/* --- Bagian Galeri --- */
+.gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 15px !important;
+    /* Jangan kasih background-color di sini biar latar belakang asli tetap muncul */
+}
+
+.gallery-grid img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+    border: 2px solid #D4AF37 !important;
+}
+
+/* --- Penutup Lightbox (Biar kalau foto diklik tetap cantik) --- */
+#lightbox img {
+    border: 3px solid #D4AF37;
+    border-radius: 8px;
+}
