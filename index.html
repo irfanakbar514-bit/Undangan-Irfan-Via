@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baralek Gadang Irfan & Via</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="no-scroll">
+
+    <div id="over-lay">
+        <div class="overlay-content" data-aos="zoom-in">
+            <p class="sub-title">THE WEDDING INVITATION</p>
+            <h1 class="font-mewah">Irfan & Via</h1>
+            <div class="guest-card">
+                <p>Kepada Yth Bapak/Ibu/Saudara/i:</p>
+                <h2 id="guest-name">Tamu Undangan</h2>
+            </div>
+            <button id="btn-buka" onclick="bukaUndangan()">Buka Undangan</button>
+        </div>
+    </div>
+
+    <audio id="song" loop><source src="lagu.mp3" type="audio/mpeg"></audio>
+
+    <div id="main-content">
+        <header class="hero">
+            <div class="hero-inner" data-aos="fade-up">
+                <p class="sub-title">WALIMATUL 'URSY</p>
+                <h1 class="font-mewah">Irfan & Via</h1>
+                <p class="wedding-date">Kamis, 06 Agustus 2026</p>
+                <div class="scroll-indicator"><span></span></div>
+            </div>
+        </header>
+
+        <section class="section-padding" data-aos="fade-up">
+            <div class="luxury-card">
+                <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                <p class="adat-intro">"Assalamu'alaikum Warahmatullahi Wabarakatuh"</p>
+                <p class="verse-text">
+                    Nan jauah diimbau datang, nan dakek dikabaan. Dengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri hari bahagia pernikahan kami.
+                </p>
+                <div class="divider-gold">◈</div>
+                <p class="verse-text">"Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri..." (QS. Ar-Rum: 21)</p>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <h2 class="section-title">Mempelai</h2>
+            <div class="mempelai-flex">
+                <div class="mempelai-box" data-aos="fade-right">
+                    <h2 class="font-mewah-small">Irfan</h2>
+                    <p class="parent-info">Putra dari Bapak Nama & Ibu Nama</p>
+                </div>
+                <div class="and-divider">dan</div>
+                <div class="mempelai-box" data-aos="fade-left">
+                    <h2 class="font-mewah-small">Via</h2>
+                    <p class="parent-info">Putri dari Bapak Nama & Ibu Nama</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding story-bg" data-aos="fade-up">
+            <h2 class="section-title">Love Story</h2>
+            <div class="story-timeline">
+                <div class="story-item">
+                    <div class="story-year">2024</div>
+                    <p>Awal pertemuan yang tak terduga, menanam benih kasih di antara dua hati.</p>
+                </div>
+                <div class="story-item">
+                    <div class="story-year">2025</div>
+                    <p>Membangun komitmen dan memohon doa restu dari kedua orang tua.</p>
+                </div>
+                <div class="story-item">
+                    <div class="story-year">2026</div>
+                    <p>Bismillah, melangkah bersama menuju ikatan suci pernikahan.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <h2 class="section-title">Menghitung Hari</h2>
+            <div id="countdown" class="countdown-wrapper"></div>
+        </section>
+
+        <section class="section-padding">
+            <h2 class="section-title">Momen Bahagia</h2>
+            <div class="photo-grid">
+                <div class="photo-frame"><img src="https://via.placeholder.com/800x1000.png?text=FOTO+1"></div>
+                <div class="photo-frame"><img src="https://via.placeholder.com/800x1000.png?text=FOTO+2"></div>
+                <div class="photo-frame"><img src="https://via.placeholder.com/800x1000.png?text=FOTO+3"></div>
+                <div class="photo-frame"><img src="https://via.placeholder.com/800x1000.png?text=FOTO+4"></div>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <h2 class="section-title">Waktu & Lokasi</h2>
+            <div class="luxury-card">
+                <div class="event-item">
+                    <h3>Akad Nikah</h3>
+                    <p>Kamis, 06 Agustus 2026</p>
+                    <p>09.00 - 10.30 WIB</p>
+                </div>
+                <div class="divider-gold">◈</div>
+                <div class="event-item">
+                    <h3>Resepsi</h3>
+                    <p>11.00 - 14.00 WIB</p>
+                </div>
+                <p class="address"><strong>Gedung Grand Ballroom</strong><br>Jl. Sudirman No. 123, Jakarta</p>
+                <a href="#" class="btn-premium">Petunjuk Lokasi (Maps)</a>
+            </div>
+        </section>
+
+        <section class="section-padding" data-aos="fade-up">
+            <h2 class="section-title">Kado Digital</h2>
+            <div class="luxury-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" width="100">
+                <p class="norek"><strong>123456789</strong></p>
+                <p>A/N: <strong>Irfan</strong></p>
+                <button onclick="salinNorek('123456789')" class="btn-premium">Salin Rekening</button>
+            </div>
+        </section>
+
+        <section class="section-padding closing-bg" data-aos="fade-up">
+            <div class="luxury-card no-border">
+                <p class="verse-text">
+                    "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai."
+                </p>
+                <div class="divider-gold">◈</div>
+                <p class="adat-intro">"Wassalamu'alaikum Warahmatullahi Wabarakatuh"</p>
+                <h2 class="font-mewah-small">Irfan & Via</h2>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 | Baralek Gadang Irfan & Via</p>
+            <p>Made with Love</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
