@@ -1,0 +1,64 @@
+:root {
+    --maroon: #5E0B15;
+    --gold: #D4AF37;
+    --cream: #F9F7F2;
+    --charcoal: #1a1a1a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    font-family: 'Montserrat', sans-serif; 
+    background-color: var(--cream); 
+    color: var(--charcoal); 
+    overflow: hidden; 
+    scroll-behavior: smooth;
+}
+
+/* Cover Styling */
+.cover {
+    height: 100vh; width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/images/cover/bg-minang.jpg') center/cover no-repeat;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: white; text-align: center; position: fixed; top: 0; z-index: 1000; transition: transform 1s ease-in-out;
+}
+
+.cover.open { transform: translateY(-100%); }
+
+.cover h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--gold); margin: 15px 0; }
+
+.btn-open { 
+    padding: 12px 35px; background: var(--maroon); color: white; border: 2px solid var(--gold); 
+    cursor: pointer; font-weight: 600; letter-spacing: 2px; transition: 0.3s;
+}
+
+/* Section Styling */
+section { padding: 80px 20px; text-align: center; max-width: 800px; margin: auto; }
+.title { font-family: 'Playfair Display', serif; color: var(--maroon); font-size: 2.2rem; margin-bottom: 30px; }
+
+.couple-name { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--maroon); }
+.ampersand { color: var(--gold); font-size: 2rem; margin: 20px 0; font-family: 'Playfair Display', serif; }
+
+/* Maps & Buttons */
+.map-wrapper { border: 5px solid white; border-radius: 10px; overflow: hidden; margin: 20px 0; }
+.btn-map { 
+    display: inline-block; padding: 10px 20px; background: var(--maroon); 
+    color: white; text-decoration: none; border-radius: 5px; font-weight: 600; 
+}
+
+/* Gift Card */
+.gift-card { 
+    background: var(--maroon); color: white; padding: 30px; border-radius: 15px; 
+    border: 2px solid var(--gold); max-width: 400px; margin: 40px auto;
+}
+.bank-name { display: block; font-weight: bold; letter-spacing: 2px; }
+.acc-number { font-size: 1.8rem; color: var(--gold); display: block; margin: 10px 0; }
+.btn-copy { background: var(--gold); color: var(--maroon); border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+
+/* Music Floating Button */
+#music-btn { 
+    position: fixed; bottom: 20px; right: 20px; background: var(--gold); border: none; 
+    width: 50px; height: 50px; border-radius: 50%; z-index: 999; cursor: pointer; display: none;
+}
+
+
