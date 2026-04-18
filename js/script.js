@@ -1,3 +1,15 @@
+// Ambil nama dari link (?to=Nama)
+const urlParams = new URLSearchParams(window.location.search);
+const namaTamu = urlParams.get('to');
+
+// Ganti tulisan "Tamu Undangan" kalau ada nama di link
+document.addEventListener('DOMContentLoaded', () => {
+    const guestElement = document.getElementById('guest-name');
+    if (namaTamu && guestElement) {
+        guestElement.innerText = namaTamu;
+    }
+});
+
 // Inisialisasi Animasi AOS
 AOS.init({ duration: 1000, once: true });
 
