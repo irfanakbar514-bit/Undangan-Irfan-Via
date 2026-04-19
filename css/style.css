@@ -200,7 +200,7 @@ body::after {
 
 /* Bunga Pojok Kiri Atas */
 body::before {
-    background-image: url('../assets/bunga-atas.png'); /* Ganti dengan path gambar kamu */
+    background-image: url('assets/audio/IMG_20260419_183518.jpg'); /* Ganti dengan path gambar kamu */
     top: 0;
     left: 0;
 }
